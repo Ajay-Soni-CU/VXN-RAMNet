@@ -61,7 +61,7 @@ This repository is not only a notebook dump. It contains a complete experimental
 | Config files | Dependency lists and example JSON config under `configs/`. |
 | Documentation | Architecture, build manual, full/short system flow, local usage guide, and future work notes. |
 | Sample outputs | Example NPZ, JSON, CSV, and Markdown reports generated from the backtracking graph pipeline. |
-
+ 
 ---
 
 ## Implemented System
