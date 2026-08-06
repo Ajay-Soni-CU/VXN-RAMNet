@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+title: VXN-RAMNet
+message: "If you use this research prototype, cite the exact repository revision and describe the evaluated dataset and configuration."
+type: software
+authors:
+  - name: VXN-RAMNet Contributors
+version: 0.3.0
+date-released: 2026-08-05
+license: MIT
+abstract: "Camera-based visual route-memory research prototype for a constrained single-junction backtracking experiment and future VisionX development."
+keywords:
+  - visual route memory
+  - computer vision
+  - assistive technology research
+  - offline AI
+  - sensor fusion
