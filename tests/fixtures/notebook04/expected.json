@@ -1,0 +1,9 @@
+{
+  "first_junction_index": 60,
+  "return_junction_index": 193,
+  "turnaround_index": 134,
+  "predictions": {
+    "query_route_1": "RIGHT_BRANCH",
+    "query_route_2": "LEFT_BRANCH"
+  }
+}

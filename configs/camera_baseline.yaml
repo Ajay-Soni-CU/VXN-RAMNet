@@ -1,0 +1,66 @@
+schema_version: 1.0.0
+project_root: .
+learning_video:
+  id: learning-route
+  path: data/raw/learning-route.mp4
+query_videos:
+  - id: query-a
+    path: data/raw/query-a.mp4
+  - id: query-b
+    path: data/raw/query-b.mp4
+branch_a_name: BRANCH_A
+branch_b_name: BRANCH_B
+frames:
+  learning_count: 270
+  query_count: 120
+  learning_max_seconds: 45
+  query_max_seconds: 20
+  jpeg_quality: 92
+  minimum_saved_ratio: 0.90
+  maximum_input_bytes: 750000000
+  allowed_extensions: [.mp4, .mov, .avi, .mkv, .webm]
+encoder:
+  name: efficientnet_b0
+  input_size: [224, 224]
+  batch_size: 16
+  weights: imagenet
+  weights_path: null
+  allow_remote_weight_resolution: true
+  dtype: float32
+detection:
+  first_junction_search: [0.12, 0.48]
+  return_junction_search: [0.48, 0.86]
+  junction_window: 5
+  junction_memory_radius: 6
+  min_junction_gap_ratio: 0.18
+  expected_first_junction_ratio: 0.35
+  expected_return_junction_ratio: 0.68
+  plausibility_weight: 0.20
+  good_junction_score: 0.70
+  acceptable_junction_score: 0.56
+  good_backtrack_score: 0.56
+  acceptable_backtrack_score: 0.42
+  reverse_sample_count: 28
+  self_similarity_chunk_size: 512
+  segment_policy: disjoint
+decision:
+  minimum_branch_score: 0.58
+  minimum_branch_gap: 0.04
+  strong_branch_score: 0.72
+  strong_branch_gap: 0.07
+  unknown_score: 0.54
+  window_selection: top_k_mean
+  top_k_windows: 3
+  confidence_temperature: 0.08
+artifacts:
+  output_root: artifacts/runs
+  run_id: null
+  overwrite_existing_run: false
+  resume: false
+  save_frames: true
+  save_self_similarity_matrix: false
+runtime:
+  log_level: INFO
+  deterministic_seed: 42
+  fail_on_degraded_graph: false
+  include_diagnostic_details: false

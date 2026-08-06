@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vxn-ramnet.local/schemas/run-summary.schema.json",
+  "title": "VXN-RAMNet run summary",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["schema_version", "run_id", "system", "implementation_status", "route_memory", "query_results", "report_files"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "run_id": { "type": "string", "pattern": "^[a-z][a-z0-9_-]{1,63}$" },
+    "system": { "const": "VXN-RAMNet" },
+    "implementation_status": { "type": "string", "minLength": 1 },
+    "route_memory": { "$ref": "route-memory-metadata.schema.json" },
+    "query_results": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "query_id", "decision_kind", "branch_id", "confidence", "reason",
+          "branch_a_score", "branch_b_score", "branch_gap", "common_score",
+          "junction_score", "selected_windows", "evidence"
+        ],
+        "properties": {
+          "query_id": { "type": "string" },
+          "decision_kind": { "enum": ["known_branch", "uncertain", "unknown_route"] },
+          "branch_id": { "type": ["string", "null"] },
+          "confidence": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+          "reason": { "type": "string" },
+          "branch_a_score": { "type": "number" },
+          "branch_b_score": { "type": "number" },
+          "branch_gap": { "type": "number", "minimum": 0 },
+          "common_score": { "type": "number" },
+          "junction_score": { "type": "number" },
+          "selected_windows": { "type": "integer", "minimum": 1 },
+          "evidence": { "type": "object" }
+        }
+      }
+    },
+    "report_files": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["json", "csv", "markdown"],
+      "properties": {
+        "json": { "type": "string" },
+        "csv": { "type": "string" },
+        "markdown": { "type": "string" }
+      }
+    }
+  }
+}

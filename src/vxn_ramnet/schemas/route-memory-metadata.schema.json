@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vxn-ramnet.local/schemas/route-memory-metadata.schema.json",
+  "title": "VXN-RAMNet route-memory metadata",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "artifact_schema_version",
+    "component_order",
+    "mode",
+    "topology_limit",
+    "segment_policy",
+    "events",
+    "quality",
+    "segments",
+    "component_counts",
+    "branch_label_note",
+    "encoder"
+  ],
+  "properties": {
+    "artifact_schema_version": { "const": "1.0.0" },
+    "component_order": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": { "type": "string" }
+    },
+    "mode": { "const": "constrained_single_junction_backtracking" },
+    "topology_limit": { "type": "string", "minLength": 1 },
+    "segment_policy": { "enum": ["disjoint", "legacy_overlap"] },
+    "events": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["first_junction_index", "turnaround_index", "return_junction_index"],
+      "properties": {
+        "first_junction_index": { "type": "integer", "minimum": 0 },
+        "turnaround_index": { "type": "integer", "minimum": 0 },
+        "return_junction_index": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "quality": {
+      "type": "object",
+      "required": ["junction_score", "junction_confidence", "backtrack_score", "backtrack_confidence"],
+      "properties": {
+        "junction_score": { "type": "number" },
+        "junction_confidence": { "enum": ["high", "review", "low"] },
+        "backtrack_score": { "type": "number" },
+        "backtrack_confidence": { "enum": ["high", "review", "low"] }
+      }
+    },
+    "segments": { "type": "object" },
+    "component_counts": { "type": "object" },
+    "branch_label_note": { "type": "string", "minLength": 1 },
+    "encoder": { "type": "object" }
+  }
+}
