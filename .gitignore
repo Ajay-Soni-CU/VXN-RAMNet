@@ -1,0 +1,56 @@
+# Python and tooling
+__pycache__/
+*.py[cod]
+*.pyd
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+*.egg-info/
+build/
+dist/
+
+# Environments and secrets
+.venv/
+venv/
+env/
+.env
+.env.*
+*.pem
+*.key
+secrets/
+
+# IDE and operating system
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local experiment configuration
+configs/local.yaml
+configs/local.yml
+configs/local.json
+
+# Private data and generated artifacts
+data/raw/
+data/private/
+artifacts/
+_uploaded_videos/
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+*.npy
+*.npz
+*.tflite
+*.onnx
+*.h5
+*.keras
+*.weights.h5
+
+# Notebook working files
+.ipynb_checkpoints/
